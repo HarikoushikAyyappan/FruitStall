@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="fruit1" class="com.stall.model.Fruits">
+         <property name = "count" value = "50"/>
+        <property name = "fruitName" value = "Apple"/>
+    </bean>
+
+    <bean id="fruit2" class="com.stall.model.Fruits">
+        <property name="count" value="40" />
+        <property name = "fruitName" value = "Mango"/>
+    </bean>
+
+    <bean id="fruit3" class="com.stall.model.Fruits">
+        <property name="count" value="60" />
+        <property name = "fruitName" value = "Grapes"/>
+    </bean>
+    <bean id="fruit4" class="com.stall.service.FruitServiceImplementation">
+    </bean>
+
+</beans>
