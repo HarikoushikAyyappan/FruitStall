@@ -1,17 +1,32 @@
 package com.stall.controller;
 import java.io.*;
 import java.util.Properties;
+import java.util.logging.Logger;
+
 import com.stall.model.Fruits;
 import com.stall.service.FruitService;
 import com.stall.service.FruitServiceImplementation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-public class Main {
+public class Main
+{
+    public static final Logger LOGGER = Logger.getLogger(String.valueOf(Main.class));
     public static void main(String[] args) throws IOException {
 
     ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        Fruits fruit1 = (Fruits) context.getBean("fruit1");
-        Fruits fruit2 = (Fruits) context.getBean("fruit2");
-        Fruits fruit3 = (Fruits) context.getBean("fruit3");
-        //FruitServiceImplementation fruit4 = (FruitServiceImplementation) context.getBean("fruit4");
-    }}
+        Fruits apple = (Fruits) context.getBean("apple");
+        Fruits mango = (Fruits) context.getBean("mango");
+        Fruits grape = (Fruits) context.getBean("grapes");
+        getFruitsById(context);
+    }
+
+private static void getFruitsById(ApplicationContext context)
+{
+    FruitService fruit4 = (FruitService) context.getBean("fruit4");
+    LOGGER.info(fruit4.getAppleById("fruit1.id"));
+    LOGGER.info(fruit4.getMangoById("fruit2.id"));
+    LOGGER.info(fruit4.getGrapesById("fruit3.id"));
+
+}
+
+}
