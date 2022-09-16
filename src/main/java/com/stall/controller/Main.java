@@ -23,9 +23,9 @@ public class Main
 private static void getFruitsById(ApplicationContext context)
 {
     FruitService fruit4 = (FruitService) context.getBean("fruit4");
-    LOGGER.info(fruit4.getAppleById("fruit1.id"));
-    LOGGER.info(fruit4.getMangoById("fruit2.id"));
-    LOGGER.info(fruit4.getGrapesById("fruit3.id"));
+    LOGGER.info(fruit4.getAppleById("one"));
+    LOGGER.info(fruit4.getMangoById("two"));
+    LOGGER.info(fruit4.getGrapesById("three"));
 
 }
 
