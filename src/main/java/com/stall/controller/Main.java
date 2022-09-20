@@ -17,13 +17,14 @@ public class Main
         Fruits apple = (Fruits) context.getBean("apple");
         Fruits mango = (Fruits) context.getBean("mango");
         Fruits grape = (Fruits) context.getBean("grapes");
-        getFruitsById(context);
+       // getFruitsById();
     }
 
-private static void getFruitsById(ApplicationContext context)
+private static void getFruitsById()
 {
+    ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     FruitService fruit4 = (FruitService) context.getBean("fruit4");
-    LOGGER.info(fruit4.getAppleById("one"));
+   LOGGER.info(fruit4.getAppleById("one"));
     LOGGER.info(fruit4.getMangoById("two"));
     LOGGER.info(fruit4.getGrapesById("three"));
 
