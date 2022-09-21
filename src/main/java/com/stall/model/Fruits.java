@@ -1,8 +1,11 @@
 package com.stall.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Fruits {
-    private int count, id;
-    private String fruitName;
+    private int count;
+    private String fruitName, id;
 
     public int getCount() {
         return count;
@@ -12,11 +15,11 @@ public class Fruits {
         this.count = count;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

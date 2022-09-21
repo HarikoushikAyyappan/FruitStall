@@ -21,7 +21,7 @@
     </bean>
     <bean id="fruit4" class="com.stall.service.FruitServiceImplementation">
     </bean>
-    <bean id="fruitModel" class="com.stall.model.Fruits">
+    <bean id="fruitService" class="com.stall.service.FruitServiceImplementation">
     </bean>
 
 </beans>

@@ -24,9 +24,9 @@ private static void getFruitsById()
 {
     ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     FruitService fruit4 = (FruitService) context.getBean("fruit4");
-   LOGGER.info(fruit4.getAppleById("one"));
+   /*LOGGER.info(fruit4.getAppleById("one"));
     LOGGER.info(fruit4.getMangoById("two"));
-    LOGGER.info(fruit4.getGrapesById("three"));
+    LOGGER.info(fruit4.getGrapesById("three"));*/
 
 }
 

@@ -21,5 +21,7 @@
     </bean>
     <bean id="fruit4" class="com.stall.service.FruitServiceImplementation">
     </bean>
+    <bean id="fruitService" class="com.stall.service.FruitServiceImplementation">
+    </bean>
 
 </beans>
