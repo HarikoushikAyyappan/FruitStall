@@ -1,55 +1,56 @@
 package com.stall.service;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.Properties;
-import java.util.logging.Logger;
 import com.stall.controller.Main;
 import com.stall.model.Fruits;
 import org.springframework.web.bind.annotation.PathVariable;
 
 public class FruitServiceImplementation implements FruitService {
-    public static final Logger LOGGER = Logger.getLogger(String.valueOf(Main.class));
-
-    /*public FruitServiceImplementation() throws IOException {
-        Properties p = new Properties();
-        FileReader reader = new FileReader("info.properties");
-        p.load(reader);
-    }*/
-
-  /* *//* public String getAppleById(String apple) throws FileNotFoundException {
-        Properties p = new Properties();
-        FileReader reader = new FileReader("info.properties");
-        p.load(reader);
-        return p.getProperty(apple);
-
+    public String getFruitsNameById(String id) throws IOException {
+        //Fruits fruits = new Fruits();
+        Properties properties = new Properties();
+        FileOutputStream outputStrem = new FileOutputStream("info.properties");
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = loader.getResourceAsStream("info.properties");
+        properties.load(inputStream);
+        return properties.getProperty(id);
     }
 
-    public String getMangoById(String mango) {
-        return p.getProperty(mango);
+    public String addFruits(Fruits fruits) throws IOException {
+        Properties properties = new Properties();
+        properties.put(fruits.getId(), fruits.getFruitName());
+        String path = "C:/Users/harikoushik.an/IdeaProjects/Shop/src/main/resources/info.properties";
+        FileOutputStream outputStrem = new FileOutputStream(path);
+        properties.store(outputStrem, null);
+        System.out.println("Properties file created......");
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = loader.getResourceAsStream("info.properties");
+        properties.load(inputStream);
+        return properties.getProperty(fruits.getId());
     }
 
-    public String getGrapesById(String grapes) {
-        return p.getProperty(grapes)*//*;
-    }*/
-    public String getFruitsNameById( String key) throws IOException {
-        Properties p = new Properties();
-        FileReader reader = new FileReader("info.properties");
-        p.load(reader);
-        return p.getProperty(key);
-    }
-    public void addFruits(String id, String fruitName) throws IOException {
-        Properties p = new Properties();
-        p.setProperty(id , fruitName);
-        p.store(new FileWriter("info.properties")," Properties Example");
-    }
     public Fruits updateFruits(Fruits fruits) throws IOException {
-        Properties p = new Properties();
-        p.setProperty(fruits.getId(), String.valueOf(fruits));
-        p.store(new FileWriter("info.properties"),"Javatpoint Properties Example");
+        Properties properties = new Properties();
+        properties.put(fruits.getId(), fruits.getFruitName());
+        String path = "C:/Users/harikoushik.an/IdeaProjects/Shop/src/main/resources/info.properties";
+        FileOutputStream outputStrem = new FileOutputStream(path);
+        properties.store(outputStrem, null);
         return fruits;
 
     }
 
+    public void deleteFruits(String id) throws IOException {
+        Properties properties = new Properties();
+        String path = "C:/Users/harikoushik.an/IdeaProjects/Shop/src/main/resources/info.properties";
+        properties.remove(id);
+        FileOutputStream outputStrem = new FileOutputStream(path);
+        properties.store(outputStrem, null);
+
+    }
+
+    @Override
+    public Fruits Response() throws Exception {
+        return null;
+    }
 }

@@ -6,14 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public interface FruitService {
-
-
-   /* String getAppleById(String apple) throws FileNotFoundException;
-
-    String getMangoById(String mango);
-
-    String getGrapesById(String grapes);*/
-   String getFruitsNameById(String key) throws IOException;
-    public void addFruits(String id, String fruitName) throws IOException;
+   String getFruitsNameById(String id) throws IOException;
+    public String addFruits(Fruits fruits) throws IOException;
      Fruits updateFruits(Fruits fruits) throws IOException;
+    void deleteFruits(String id) throws IOException;
+    public Fruits Response() throws Exception;
 }

@@ -1,0 +1,6 @@
+MYSQL database
+*MYSQL  is a Relational Database Management System used to store and manipulate data which is in the form of tables,rows and coloumns
+*MySQl is based on structured query language which is used for handling data.
+*MYSQL is fast and it implements database operations on tables,rows ,coloumns and indexes.
+*it allows us to obtain a relationship between rows and coloumns of various tables and it uses various sql queries to provide the end
+user valuable information.

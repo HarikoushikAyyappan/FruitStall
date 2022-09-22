@@ -12,29 +12,14 @@ import javax.ws.rs.core.MediaType;
 @RestController
      @RequestMapping(value ="/fruits")
      public class FruitController {
-
     @Autowired
     FruitService fruitService;
-
-          @RequestMapping(value = "/list", method = RequestMethod.GET)
-          @ResponseBody
-          public Fruits Response() throws Exception {
-               Fruits fruitModel = new Fruits();
-               Properties properties = new Properties();
-               properties.load(getClass().getClassLoader().getResourceAsStream("info.properties"));
-               fruitModel.setFruitName(properties.getProperty("one"));
-               return fruitModel;
-          }
-
      @RequestMapping(value = "/{id}", method = RequestMethod.GET)
            public String getFruitsNameById(@PathVariable String id) throws IOException {
-          Properties properties = new Properties();
-          properties.load(getClass().getClassLoader().getResourceAsStream("info.properties"));
-          return properties.getProperty(id);
-
-
+               // Fruits fruits = new Fruits();
+              //return fruitService.getFruitsNameById(id);
+                return fruitService.getFruitsNameById(id);
      }
-
    @RequestMapping (value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
    @ResponseBody
    @ResponseStatus(HttpStatus.OK)
@@ -43,16 +28,21 @@ import javax.ws.rs.core.MediaType;
 
        return fruitModel;
    }
-   /* @RequestMapping (value = "/postByKey", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+   @RequestMapping (value = "/postByKey", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public void addFruits(@RequestBody Fruits fruitObject) {
-        fruitService.addFruits(fruitObject.getId(), fruitObject.getFruitName());
-    }*/
+    public String addFruits(@RequestBody Fruits fruits) throws IOException {
+        return fruitService.addFruits(fruits);
+    }
 
     @RequestMapping(value = "/put", method = RequestMethod.PUT)
     public Fruits updateFruits(@RequestBody Fruits fruits) throws IOException {
         return fruitService.updateFruits(fruits);
+
+    }
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteCountry(@PathVariable("id") String id) throws IOException {
+        fruitService.deleteFruits(id);
 
     }
 
