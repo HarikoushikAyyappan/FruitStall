@@ -52,4 +52,7 @@ Creating new Table in Schema:
                 *Adding coloumn in the table:
                     Syntax: ALTER TABLE table_name
                            ADD new_column_name column_definition
-                           [ FIRST | AFTER column_name ];
+                          [ FIRST | AFTER column_name ];
+
+    Reference:
+    1.https://www.javatpoint.com/mysql-tutorial
