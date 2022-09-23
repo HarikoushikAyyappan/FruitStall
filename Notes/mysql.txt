@@ -4,3 +4,52 @@ MYSQL database
 *MYSQL is fast and it implements database operations on tables,rows ,coloumns and indexes.
 *it allows us to obtain a relationship between rows and coloumns of various tables and it uses various sql queries to provide the end
 user valuable information.
+Working of MYSQL:
+*MYSQL follows Client-Server Architecture.
+*Core component of MYSQL is MYSQL Server .MYSQL creates a Database . Client gives request through Graphical User Interface.One of
+GUI is MYSQL Workbench that we use.
+*Server responds to the requests provided and provides the necessary output.
+*Some of the advantages of MYSQL is *It is easy to use
+                                    *It is fast and scalable
+                                    *Easy to download and configure
+                                    *Client-Server model
+                                    *Platform independency and ability to be compatible with many Operating System
+                                    *High performance in terms of memory efficiency etc..
+Creating new Schema in Workbench:
+*Schema can be created in two ways 1.By using command line client 2. using Workbench
+*Using Workbench,Schema is created by clicking new schema in schema menu. After providing name of database, if we refresh, new schema
+is created. In schema menu, we will be able to see the schema that we created. By clicking "i" near the name of schema ,we will be
+knowing the details of schema. and we will have subgroups like Tables,views and functions etc under the schema that is created.
+*we have commands like USE ,SHOW to work on the database that we created.
+Creating new Table in Schema:
+*Tables help organization of data into rows,coloumns and it stores and displays data in organized manner.
+*A Table creation command requires 1.Name of the Table, 2.Name of Fields 3.Definition for each Fields.
+*Creation of Table can be done in two ways
+        1. By command line client
+                    *The command CREATE TABLE is used to create table .
+        Syntax:         CREATE TABLE [IF NOT EXISTS] table_name(
+                        column_definition1,
+                        column_definition2,
+                        ........,
+                        table_constraints
+                    );
+        *The database name should be unique, we will give name of the coloumns along with the datatype of th the coloumn
+        , the table constraints specifies primarykey,Foreign key,Unique Key,Check etc.
+                *Syntax of coloumn definition column_name1 data_type(size) [NULL | NOT NULL]
+         * the command SHOW table_name and DESCRIBE table_name are used to bet insights about the table.
+         2.Using Workbench
+                    *By clicking on the schema that we created, it shows suboptions like tables ,views etc..From that click
+                    Tables,Right click and select Create a table. Provide the name of the table,name of the coloumn along
+                    with datatype and details about NOTNULL,Primary Key,AutoIncremental etc and click Apply and the table created
+                    could be seen.
+ MYSQL Queries:
+        *some commonly used MYSQL Queries are INSERT,SELECT,UPDATE ,DELETE which can be used with database,tables and records.
+        *create database database_name;->creates a database
+        *use database_name;->used to do create tables and other database objects.
+        *SHOW DATABASES->shows the list of databases created.
+        *MySQL create query->  used to create a table, view, procedure and function.
+        *MySQL alter query -> is used to add, modify, delete or drop columns of a table.
+                *Adding coloumn in the table:
+                    Syntax: ALTER TABLE table_name
+                           ADD new_column_name column_definition
+                           [ FIRST | AFTER column_name ];
