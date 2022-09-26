@@ -53,6 +53,180 @@ Creating new Table in Schema:
                     Syntax: ALTER TABLE table_name
                            ADD new_column_name column_definition
                           [ FIRST | AFTER column_name ];
+                *Adding multiple coloumns in the table:
+                    Syntax: ALTER TABLE table_name
+                            ADD new_column_name column_definition
+                            [ FIRST | AFTER column_name ],
+                           ADD new_column_name column_definition
+                           [ FIRST | AFTER column_name ],
+                             ...
+                           ;
+                *Modifying coloumn in a table:
+                        It is used to modify coloumn definition of a table.
+                        Syntax:ALTER TABLE table_name
+                               MODIFY column_name column_definition
+                               [ FIRST | AFTER column_name ];
+                *Drop coloumn in a table:
+                        It drops a coloumn from a table.
+                        Syntax:ALTER TABLE table_name
+                               DROP COLUMN column_name;
+                *Rename coloumn in a Table:
+                        It changes the name of a coloumn in a table.
+                        Syntax:ALTER TABLE table_name
+                               CHANGE COLUMN old_name new_name
+                               column_definition
+                               [ FIRST | AFTER column_name ]
+                *Rename Table:
+                        Syntax:ALTER TABLE table_name
+                               RENAME TO new_table_name;
+        *MySQL Insert Query:
+                        It is used to insert data in Table by either adding values to single row or adding values in multiple
+                        rows.
+                        Syntax:INSERT INTO table_name ( field1, field2,...fieldN )
+                               VALUES
+                               ( value1, value2,...valueN );
+                        We can also add multiple values like
+                        Syntax:INSERT INTO table_name VALUES
+                        ( value1, value2,...valueN )
+                        ( value1, value2,...valueN )
+                        ...........
+                        ( value1, value2,...valueN );
+                       We can also add or store data for selected fields like
+                       Syntax:INSERT INTO table_name (field1, field2)
+                              VALUES ('value1', 'value2'), ('value1', 'value2');
+                       We can also make MysQL show the records of a particular table using
+                       Syntax:mysql> SELECT * FROM Table_name
+               Insert Date in MySQL table:
+                       We can insert Date as YYYY-MM-DD which is the default format.
+                       INSERT INTO table_name (column_name, column_date) VALUES ('DATE: Manual Date', 'YYYY-MM-DD');
+                       If we want to insert date in mm/dd/yyyy format then
+                       INSERT INTO table_name VALUES (STR_TO_DATE(date_value, format_specifier));
+        MySQL Update Query:
+                       Used to moDify the data in SQL table
+                       Used along with SET and WHERE clauses,SET is used to change the value and WHERE is used to
+                       specify where we need to do updation.
+                       The update command in MySQL supports modifiers namely
+                         LOW_PRIORITY:It halts the update till any other client reads from the table.it works for storage
+                         engines that use only table level locking.
+                         IGNORE:it makes the statement execute even if some error occured.If it finds any duplicate key
+                         data will not be updated.
+                         Syntax:UPDATE [LOW_PRIORITY] [IGNORE] table_name
+                                    SET column_assignment_list
+                                    [WHERE condition]
+        MySQL Delete Query:
+                       *Used to delete the records from mysql table that is not needed.
+                       *It is possible to delete more than one record at a time.
+                       *If a record is deleted,it cant be regained again,so it is advisable to create a backup of the database.
+                       Syntax:DELETE FROM table_name WHERE condition;
+                       *If we want to delete records from multiple table using single delete query,JOIN statement is used with
+                       delete statement.
+                       *If we want to delete all records from a table without knowing the number of records deleted,TRUNCATE
+                       statement performs good.
+                MySQL Delete and Limit clause:
+                      *Used to limit the returns of result from a record.
+                      Syntax:DELETE FROM table_name
+                             WHERE condition
+                             ORDER BY colm1, colm2, ...
+                             LIMIT row_count;
+        MySQL Select Query:
+                      *Used to fetch data from one or more tables and get data from all fields or the fields which match specified
+                      condition.
+                      *Can be used across platforms such PHP etc.
+                      *Syntax:SELECT field_name1, field_name 2,... field_nameN
+                              FROM table_name1, table_name2...
+                              [WHERE condition]
+                              [GROUP BY field_name(s)]
+                              [HAVING condition]
+                              [ORDER BY field_name(s)]
+                              [OFFSET M ][LIMIT N];
+                      *Syntax for all fields without condition:
+                            SELECT * FROM tables [WHERE conditions]
+                            [GROUP BY fieldName(s)]
+                            [HAVING condition]
+                            [ORDER BY fieldName(s)]
+                            [OFFSET M ][LIMIT N];
+        UNIQUE KEY:
+                     *It is a field or combination of fields which ensure only unique element can be stored in a particular
+                     coloumn(s).
+                     *MySQL allows two coloumns have unique key constraints.It can accept null values but there could be
+                     only one null value per coloumn.
+                     *Syntax:CREATE TABLE table_name(
+                                 col1 datatype,
+                                 col2 datatype UNIQUE,
+                                 ...
+                             );
+                     *If we want to make more than one coloumn as unique,
+                     Syntax:CREATE TABLE table_name(
+                              col1 col_definition,
+                              col2 col_definition,
+                              ...
+                              [CONSTRAINT constraint_name]
+                              UNIQUE(column_name(s))
+                            );
+                     It is advisable to give the constraint name as unique in above syntax or it takes the constraint name
+                     automatically.
+                     *The syntax ALTER TABLE table_name  DROP INDEX constraint_name;  is used to drop a unique name.
+                     *The syntax for creating constraint using Alter query is,
+                             ALTER TABLE table_name ADD CONSTRAINT constraint_name UNIQUE(column_list);
+        PRIMARY KEY:
+                     *Used to identify each record in a table uniquely.
+                     *If a coloumn contains Primary key constraints,it cannot be null or empty.
+                     *If a new record is created,Primary key uses AUTO_INCREMENT to increment its value.
+                     *Syntax with CREATE Query is,
+                     CREATE TABLE table_name(
+                         col1 datatype PRIMARY KEY,
+                         col2 datatype,
+                         ...
+                     );
+                     *Syntax for creating more than one PrimaryKey coloumn,
+                     CREATE TABLE table_name
+                     (
+                       col1 col_definition,
+                       col2 col_definition,
+                       ...
+
+                       CONSTRAINT [constraint_name]
+                        PRIMARY KEY (column_name(s))
+                     );
+                     *Syntax for creating ALTER Query
+                     ALTER TABLE table_name ADD PRIMARY KEY(column_list);
+                     *Syntax for dropping Primary Key is given by,
+                     ALTER TABLE table_name  DROP PRIMARY KEY;
+        FOREIGN KEY:
+                     *Used to link more than one table.
+                     *Also called Reference key ie) Foreign key field in one table refers to Primary key field of another table.
+                     *Syntax for CREATE and ALTER Query:[CONSTRAINT constraint_name]
+                                                         FOREIGN KEY [foreign_key_name] (col_name, ...)
+                                                         REFERENCES parent_tbl_name (col_name,...)
+                                                         ON DELETE referenceOption
+                                                         ON UPDATE referenceOption
+                     *The Reference options are CASCADE,SETNULL,SETDEFAULT,RESTRICT,NOACTION.
+                     *Dropping Foreign key:
+                     ALTER TABLE table_name DROP FOREIGN KEY fk_constraint_name;
+                     *Syntax for ALTER Query:
+                     ALTER TABLE table_name
+                         ADD [CONSTRAINT [symbol]] FOREIGN KEY
+                         [index_name] (column_name, ...)
+                         REFERENCES table_name (column_name,...)
+                         ON DELETE referenceOption
+                         ON UPDATE referenceOption
+
+        Composite Key:
+                     *To make a row unique,two or more coloumns are combined and made as a key called Composite Key.
+                     *Syntax for CREATE Query:
+                     CREATE TABLE Product (
+                         field1 int NOT NULL,
+                         field2 varchar(45),
+                         field3 varchar(45),
+                         PRIMARY KEY(field2, field3)
+                     );
+                     *We can add the Syntax :ALTER TABLE table_name add primary key(field3, field4);  to add ALTER Query
+                     in a table that is already created.
+
+
 
     Reference:
     1.https://www.javatpoint.com/mysql-tutorial
+    2.https://www.youtube.com/watch?v=8ClTqxa6iAk
+    3.https://www.youtube.com/watch?v=Z7bX3xM5ySQ
+    4.https://www.youtube.com/watch?v=ySlWh3JT1L0
