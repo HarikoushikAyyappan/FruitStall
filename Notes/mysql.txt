@@ -222,7 +222,18 @@ Creating new Table in Schema:
                      );
                      *We can add the Syntax :ALTER TABLE table_name add primary key(field3, field4);  to add ALTER Query
                      in a table that is already created.
-
+JDBC connection:
+                     *Java DataBase Connectivity is an API that manages connection of Java programs with database
+                     using queries and commands.
+                     *JDBC consists of two layers namely JDBC API and JDBC Driver.
+                     *JDBC API is used for communicating a java program with JDBC manager and JDBC Driver helps to communicate
+                     with the database.
+                     *The steps involved in doing a JDBC Connection is 1.create table in a database 2.Loading and Registering
+                     Drivers 3.Creating Connection 4.Creating Statements 5.Executing the Query 6. Processing the results7.Closing
+                     the connection.
+                     *The Driver class that is used as default is com.mysql.cj.jdbc.driver.
+                     *The whole connection process is done with the help of built in classes and functions
+                     available in java.sql package.
 
 
     Reference:
@@ -230,3 +241,7 @@ Creating new Table in Schema:
     2.https://www.youtube.com/watch?v=8ClTqxa6iAk
     3.https://www.youtube.com/watch?v=Z7bX3xM5ySQ
     4.https://www.youtube.com/watch?v=ySlWh3JT1L0
+    5.https://www.geeksforgeeks.org/java-program-to-insert-details-in-a-table-using-jdbc/
+    6.https://www.baeldung.com/java-connect-mysql
+    7.https://www.javatpoint.com/example-to-connect-to-the-mysql-database
+    8.https://www.infoworld.com/article/3388036/what-is-jdbc-introduction-to-java-database-connectivity.html

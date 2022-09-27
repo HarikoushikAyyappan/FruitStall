@@ -23,5 +23,7 @@
     </bean>
     <bean id="fruitService" class="com.stall.service.FruitServiceImplementation">
     </bean>
+    <bean id="connectionObject" class="com.stall.service.SqlConnection">
+    </bean>
 
 </beans>
