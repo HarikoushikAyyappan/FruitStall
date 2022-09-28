@@ -1,4 +1,5 @@
 package com.stall.controller;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.io.*;
 import com.stall.model.Fruits;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 @RestController
      @RequestMapping(value ="/fruits")
      public class FruitController {
+
     @Autowired
     FruitService fruitService;
      @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -47,12 +49,7 @@ import javax.ws.rs.core.MediaType;
         fruitService.deleteFruits(id);
 
     }
-    @RequestMapping (value = "/postPerson", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
-    public Person connectionFunction(@RequestBody Person person) throws IOException {
-        return SqlConnection.connectionFunction(person);
-    }
+
 
 }
 

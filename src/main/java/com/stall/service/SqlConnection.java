@@ -1,26 +1,27 @@
 package com.stall.service;
+import com.stall.dao.DaoImplementation;
+import com.stall.model.Fruits;
 import com.stall.model.Person;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class SqlConnection {
     Person person = new Person();
-    public static Person connectionFunction(Person person){
-  try{
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection con=DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/person","root","HkSkmysql1*");
-        Statement stmt=con.createStatement();
-      ResultSet rs=stmt.executeQuery( "insert into person values(" +person.getId()+ ", '" + person.getName()+
-              "', " +person.getAge()+ ", " +person.getMobile()+ ")");
-        /*ResultSet rs=stmt.executeQuery("INSERT INTO person VALUES");
-        while(rs.next())
-            System.out.println(rs.getInt("id")+"  "+rs.getString("name")+"  "+rs.getInt("age")+" "+rs.getLong("mobile"));
-        con.close();*/
-      con.close();
-    }catch(Exception e){ System.out.println(e);}
-  return person;
-}
-
+     DaoImplementation daoImplementation = new DaoImplementation();
+    public  Person connectionFunction(Person person) throws SQLException {
+        return daoImplementation.personPostFunction(person);
+    }
+    public Person personPutFunction(@RequestBody Person person) throws IOException, SQLException, ClassNotFoundException {
+        return daoImplementation.personPutFunction(person);
+    }
+    public Person personGetFunction( String id) throws IOException{
+        return daoImplementation.personGetFunction(id);
+    }
+    public void deletePersonFunction( String id) throws IOException, SQLException {
+        daoImplementation.deletePersonFunction(id);
+    }
 }
 
