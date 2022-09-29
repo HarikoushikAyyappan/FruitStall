@@ -12,7 +12,7 @@ public  class DaoImplementation {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/fruitstall", "root", "HkSkmysql1*");
             //specify the INSERT statement
@@ -41,29 +41,29 @@ public  class DaoImplementation {
       return person;
     }
     public Person personPutFunction(Person person) throws SQLException, ClassNotFoundException {
-        Connection connection = null;
+       Connection connection = null;
         PreparedStatement statement = null;
         //PreparedStatement stmt = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/fruitstall", "root", "HkSkmysql1*");
-            //specify the INSERT statement
-            String sql = "UPDATE person SET age=?, name=?, mobile=? WHERE id=?";
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                 connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/fruitstall", "root", "HkSkmysql1*");
+                //specify the INSERT statement
+                //String sql = "UPDATE person SET id="+person.getId()+ ",age="+person.getAge()+ ", name="+person.getName()+", mobile="+person.getMobile()+" WHERE id="+person.getId();
+                //"UPDATE person SET age="+person.getAge()+", name="+person.getName()+", mobile="+person.getMobile()+" WHERE id="+person.getId()
+                String sql = "UPDATE person SET age=?, name=?, mobile=? WHERE id=?";
+                 statement = connection.prepareStatement(sql);
+                statement.setInt(4, person.getId());
+                statement.setString(2, person.getName());
+                statement.setInt(1, person.getAge());
+                statement.setLong(3, person.getMobile());
+                statement.executeUpdate();
 
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, person.getId());
-            statement.setString(2, person.getName());
-            statement.setInt(3, person.getAge());
-            statement.setLong(4, person.getMobile());
-
-            statement.executeUpdate();
-
-        }
-        catch (Exception e) {
-            System.err.println("Error: ");
-            e.printStackTrace(System.err);
             }
+       catch (Exception e) {
+           System.err.println("Error: ");
+           e.printStackTrace(System.err);
+       }
 
 // CLOSE the Statement and Connection objects
         finally {
@@ -78,18 +78,19 @@ public Person personGetFunction(String id){
     //PreparedStatement statement = null;
     Statement stmt1 = null;
     try{
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
          con1=DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/fruitstall","root","HkSkmysql1*");
-//here sonoo is database name, root is username and password
+
          stmt1= con1.createStatement();
-        ResultSet rs=stmt1.executeQuery("select * from emp");
+        ResultSet rs=stmt1.executeQuery("select * from person");
         while(rs.next())
             System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
         con1.close();
     }
     catch(Exception e){
         System.out.println(e);}
+
     return person;
 }
     public void deletePersonFunction( String id) throws IOException, SQLException {
@@ -97,7 +98,7 @@ public Person personGetFunction(String id){
         //PreparedStatement statement = null;
         PreparedStatement statement1 = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection1 = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/fruitstall", "root", "HkSkmysql1*");
             String sql = "DELETE FROM person WHERE id=?";
@@ -105,10 +106,8 @@ public Person personGetFunction(String id){
              statement1 = connection1.prepareStatement(sql);
             statement1.setString(1, id);
 
-            int rowsDeleted = statement1.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("A user was deleted successfully!");
-            }
+            statement1.executeUpdate();
+
         }// End of TRY block
 
         catch (Exception e) {

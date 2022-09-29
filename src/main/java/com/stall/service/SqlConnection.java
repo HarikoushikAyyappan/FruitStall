@@ -14,7 +14,7 @@ public class SqlConnection {
     public  Person connectionFunction(Person person) throws SQLException {
         return daoImplementation.personPostFunction(person);
     }
-    public Person personPutFunction(@RequestBody Person person) throws IOException, SQLException, ClassNotFoundException {
+    public Person personPutFunction( Person person) throws IOException, SQLException, ClassNotFoundException {
         return daoImplementation.personPutFunction(person);
     }
     public Person personGetFunction( String id) throws IOException{

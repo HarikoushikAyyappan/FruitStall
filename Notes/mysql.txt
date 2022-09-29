@@ -234,7 +234,62 @@ JDBC connection:
                      *The Driver class that is used as default is com.mysql.cj.jdbc.driver.
                      *The whole connection process is done with the help of built in classes and functions
                      available in java.sql package.
+ JPA:
+                     *JPA(Java Persistence Api) is a specification that helps in object relational mapping of relational
+                     data in java applications ie) instead of using sql statements it helps in handling directly with
+                     objects.
+                     *JPA acts as an interlink between objects in java programming model and relational database systems.
+                     *Being a specification,it needs an implementaion,so ORM tools like Hibernate,iBatis and Toplink
+                     implements JPA .
+                     *JPA Object Relational Mapping maps a Java object with a Database coloumn.Hibernate,iBatis and Toplink etc..
+                     are some frameworks that function in ORM mechanism.
+       Mapping Directions:
+                     *Unidirectional Relationship:Only one entity can refer the properties to another(ie)one owning side.)
+                     *Bidirectional Relationship:Every Entity can refer the properties to another.ie) there will be one owning
+                     side and one inverse side.
+       Types of ORM Mappings:
+                    *One to One:An instance of an Entity can refer to the properties of only one instance of another Entity.
+                    Represented by @OneToOne annotation.
+                    *One to Many:An Instance of one Entity can refer to the many instances of other entity.Represented by
+                    @OneToMany annotation.
+                    *Many to One: Many Instances of an entity can be referred to only one instance of other entity.
+                    Represented by @ManyToOne annotation.
+                    *Many to Many:multiple instances of an entity can be referred to many instances of other entity.
+                    Represented by @ManyToMany annotation.
+       JPA Entity:
+                    *An Entity is an unit that comprisee  various states.It can be made to function as an object oriented
+                    model when added behaviour.Entity consists certain properties such as
+                      Persistbility:It can be stored in a database and accessed,retrieved.
+                      Persistent identity:Each Entity is unique and has an object identity .Object Identity can be relatde to the concept
+                      of primarykey in database.
+                      Transactionality:Each Entity can perform CRUD operations and make changes in the database.
+                      Granuality:Entities should not be primitives or primitive wrappers or built in objects.
+                    *An Entity can be associated with some metadata that can be either in XML file form or Annotation form.
+       Creating an Entity:
+                    *A Java class can be converted into an Entity by Creating a No-Argument Constructor and Annotation.
+                    *A java class can be converted into an Entity by using @Entity snd @id annotation.
+       Entity Manager:
+                    *Instance referred by an Entity is managed by Entity manager.
+                    *Entity manager is used to read,write,delete an entity.Entity manager is the implementation of Api.
+       Steps to persist an Entity Object:
+                    *Entity Manager Factory is an interface that provides an Entity Manager.The interface is present in
+                    java.persistence package.
+                    *Example: EntityManagerFactory emf=Persistence.createEntityManagerFactory("entity name");
+                        where persistence is the bootstrap class that provides EntityManagerFactory interface and createEntityManagerFactory
+                        method is used to create and return entitymanager factory for the named persistence unit.this method contains the
+                        name of the persistance unit specified in persisitence.xml file.
+                    *getTransaction() method - This method returns the resource-level EntityTransaction object.
+                     begin() method - This method is used to start the transaction.
+                     em.persist(s1);
+                     persist() - This method is used to make an instance managed and persistent. An entity instance is passed within this method.
+                     5) Closing the transaction
 
+                     em.getTransaction().commit();
+                     6) Releasing the factory resources.
+
+                     emf.close();
+                         em.close();
+                     close() - This method is used to releasing the factory resources.
 
     Reference:
     1.https://www.javatpoint.com/mysql-tutorial
@@ -245,3 +300,8 @@ JDBC connection:
     6.https://www.baeldung.com/java-connect-mysql
     7.https://www.javatpoint.com/example-to-connect-to-the-mysql-database
     8.https://www.infoworld.com/article/3388036/what-is-jdbc-introduction-to-java-database-connectivity.html
+    9.https://www.codejava.net/java-se/jdbc/jdbc-tutorial-sql-insert-select-update-and-delete-examples
+    10.https://hevodata.com/learn/rest-api-to-mysql-2-easy-methods/
+    11.https://www.javatpoint.com/example-to-connect-to-the-mysql-database
+    12.https://thorben-janssen.com/mapping-definitions-jpa-hibernate-annotations-xml/#:~:text=As%20you've%20seen%2C%20JPA,file%20attribute%20in%20the%20persistence.
+    13.https://www.javatpoint.com/jpa-tutorial
