@@ -302,7 +302,25 @@ JDBC connection:
        *The same process is carried out like creating  instead the field to be updated is only set.
        *The initial process for creation is done and the corresponding element to be deleted is found and ir is removed using remove()
        method.
+Hibernate:
+        *Hibernate is a framework which is the implementation of JPA Specification.
+        *It is used in the development of interaction of a Java program and Database.
+        *It is an open source,lightweight Object Relational Mapping Tool.
+    Hibernate Architecture:
+        *The Hibernate architecture includes many objects such as persistent object, session factory,
+         transaction factory, connection factory, session, transaction etc.
+        *The Hibernate architecture consistes of four layers,
 
+         Java application layer
+         Hibernate framework layer
+         Backhand api layer
+         Database layer
+         *Hibernate layer consisting of Mapping file and Configuration file acts as an interconnect between
+         persisiten object which is obtained from a java application and Database.
+         *Hibernate consists of core objects such as Session,Session Factory,Transaction objects and connection
+         provider.
+         *The concept of Session is similar to Entitymanager in jpa specification and Session Factory is similar
+         Entity Manager Factory.The concept of Transaction is also present in JPA specification.
 
 
     Reference:
@@ -319,3 +337,4 @@ JDBC connection:
     11.https://www.javatpoint.com/example-to-connect-to-the-mysql-database
     12.https://thorben-janssen.com/mapping-definitions-jpa-hibernate-annotations-xml/#:~:text=As%20you've%20seen%2C%20JPA,file%20attribute%20in%20the%20persistence.
     13.https://www.javatpoint.com/jpa-tutorial
+    14.https://www.javatpoint.com/hibernate-tutorial

@@ -41,7 +41,9 @@ import javax.ws.rs.core.MediaType;
 
     @RequestMapping(value = "/put", method = RequestMethod.PUT)
     public Fruits updateFruits(@RequestBody Fruits fruits) throws IOException {
+        System.out.println("print");
         return fruitService.updateFruits(fruits);
+
 
     }
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
