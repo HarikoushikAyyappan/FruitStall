@@ -290,6 +290,20 @@ JDBC connection:
                      emf.close();
                          em.close();
                      close() - This method is used to releasing the factory resources.
+       Inserting records in Entity:
+       *Create an Entity class with getter and setters.
+       *Create Persistence.xml file with persistence unit name.
+       *Create instances for EntitymanagerFactory and EntityManager and call create method for both.
+       * set the fields to entity class and persist the isnatnces using persist() method.commit and close the transaction
+       using its corresponding methods.
+       Finding an Entity:
+       *The same process is carried out except setting the fields to Entity class instead find() method with parameters
+       StudentEntity and id(primary key) is used here.
+       *The same process is carried out like creating  instead the field to be updated is only set.
+       *The initial process for creation is done and the corresponding element to be deleted is found and ir is removed using remove()
+       method.
+
+
 
     Reference:
     1.https://www.javatpoint.com/mysql-tutorial
