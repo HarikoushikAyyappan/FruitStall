@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.core.MediaType;
 
 @RestController
      @RequestMapping(value ="/fruits")
@@ -24,7 +23,7 @@ import javax.ws.rs.core.MediaType;
               //return fruitService.getFruitsNameById(id);
                 return fruitService.getFruitsNameById(id);
      }
-   @RequestMapping (value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+   @RequestMapping (value = "/create", method = RequestMethod.POST)
    @ResponseBody
    @ResponseStatus(HttpStatus.OK)
    public Fruits create(@RequestBody Fruits fruitModel)
@@ -32,7 +31,7 @@ import javax.ws.rs.core.MediaType;
 
        return fruitModel;
    }
-   @RequestMapping (value = "/postByKey", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+   @RequestMapping (value = "/postByKey", method = RequestMethod.POST)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public String addFruits(@RequestBody Fruits fruits) throws IOException {

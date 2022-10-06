@@ -8,16 +8,15 @@ import com.stall.service.FruitService;
 import com.stall.service.SqlConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.core.MediaType;
 
 @RestController
 @RequestMapping(value ="/person")
 public class PersonController {
     SqlConnection sqlConnection = new SqlConnection();
-    @RequestMapping (value = "/postPerson", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-    @ResponseBody
+    @PostMapping (value = "/postPerson")
     @ResponseStatus(HttpStatus.OK)
     public Person connectionFunction(@RequestBody Person person) throws IOException, SQLException {
         return sqlConnection.connectionFunction(person);

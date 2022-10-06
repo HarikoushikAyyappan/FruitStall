@@ -1,0 +1,52 @@
+JSP:
+   *It is  a technology used to create web application like servlet technology but it provides more features than
+   Servlet technology.
+   *JSP tags are easier to maintain than HTML tags and provides additional features such as Expression language,JSTL etc..
+   *The Lifecycle of JSP is,
+      *Translation of JSP Page
+      *Compilation of JSP Page
+      *Classloading (the classloader loads class file)
+      *Instantiation (Object of the Generated Servlet is created).
+      *Initialization ( the container invokes jspInit() method).
+      *Request processing ( the container invokes _jspService() method).
+      *Destroy ( the container invokes jspDestroy() method).
+      JSP API:
+      * JSP API consists of two packages:
+            javax.servlet.jsp
+            javax.servlet.jsp.tagext
+      *The javax.servlet.jsp package has two interfaces and classes.The two interfaces are:
+                  JspPage
+                  HttpJspPage
+        The classes are :
+             JspWriter
+             PageContext
+             JspFactory
+             JspEngineInfo
+             JspException
+             JspError
+      *All the generated servlet claases must implement JSP Page interface and JSP Page interface implements Servlet
+      interface.
+      *public void jspInit()&public void jspDestroy() are the methods of JSP page interface and public void _jspService()
+      is the method of Http page Interface.
+     JSP Scripting elements:
+       * Java code is inserted into jsp page using Scripting elements.
+          The Scripting elements are scriptlet tag
+                                     expression tag
+                                     declaration tag
+       *JSP Scriplet tag:
+        It is used to execute java source code in JSP,
+       Syntax:
+       <%  java source code %>
+       *Expression Tag:
+        Expression Tag is mainly used to print the values of variable or method.
+        Syntax:
+        <%=  statement %>
+      *JSP Declaration Tag:
+      *It is used to declare Fields and Methods.
+      *The code inside Declaration tag is kept outside service() method of auto generated servlet so that it does not get
+      memory at each request.
+     *Scriplet Tag declares only fields but Declaration Tag declares both methods and fields.The Scriplet tag is present
+     inside Service() method but Declaration tag is present outside Service() method.
+     *JSP Implicit Objects:
+       *There are 9 implicit objects in jsp
+
