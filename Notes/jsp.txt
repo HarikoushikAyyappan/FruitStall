@@ -48,5 +48,5 @@ JSP:
      *Scriplet Tag declares only fields but Declaration Tag declares both methods and fields.The Scriplet tag is present
      inside Service() method but Declaration tag is present outside Service() method.
      *JSP Implicit Objects:
-       *There are 9 implicit objects in jsp
+       *There are 9 implicit objects in jsp:
 
