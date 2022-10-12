@@ -1,3 +1,4 @@
+//Model class for rest api without jpa and jsp
 package com.stall.model;
 
 public class Person {

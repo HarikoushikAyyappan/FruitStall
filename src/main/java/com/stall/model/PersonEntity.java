@@ -1,9 +1,9 @@
+//Model class code for rest api using jsp,jdbc,jpa
 package com.stall.model;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "person")
-
 public class PersonEntity  {
     @Id
     @Column(name= "id")

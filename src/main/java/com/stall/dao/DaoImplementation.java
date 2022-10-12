@@ -1,3 +1,4 @@
+//dao layer code for jdbc connection without jpa and jsp.
 package com.stall.dao;
 
 import com.stall.model.Person;
@@ -43,14 +44,11 @@ public  class DaoImplementation {
     public Person personPutFunction(Person person) throws SQLException, ClassNotFoundException {
        Connection connection = null;
         PreparedStatement statement = null;
-        //PreparedStatement stmt = null;
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                  connection = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/fruitstall", "root", "HkSkmysql1*");
                 //specify the INSERT statement
-                //String sql = "UPDATE person SET id="+person.getId()+ ",age="+person.getAge()+ ", name="+person.getName()+", mobile="+person.getMobile()+" WHERE id="+person.getId();
-                //"UPDATE person SET age="+person.getAge()+", name="+person.getName()+", mobile="+person.getMobile()+" WHERE id="+person.getId()
                 String sql = "UPDATE person SET age=?, name=?, mobile=? WHERE id=?";
                  statement = connection.prepareStatement(sql);
                 statement.setInt(4, person.getId());
@@ -75,7 +73,6 @@ public  class DaoImplementation {
     }
 public Person personGetFunction(String id){
     Connection con1 = null;
-    //PreparedStatement statement = null;
     Statement stmt1 = null;
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -95,7 +92,6 @@ public Person personGetFunction(String id){
 }
     public void deletePersonFunction( String id) throws IOException, SQLException {
         Connection connection1 = null;
-        //PreparedStatement statement = null;
         PreparedStatement statement1 = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -105,7 +101,6 @@ public Person personGetFunction(String id){
 
              statement1 = connection1.prepareStatement(sql);
             statement1.setString(1, id);
-
             statement1.executeUpdate();
 
         }// End of TRY block

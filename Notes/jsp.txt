@@ -49,4 +49,42 @@ JSP:
      inside Service() method but Declaration tag is present outside Service() method.
      *JSP Implicit Objects:
        *There are 9 implicit objects in jsp:
+       *JSP Request implicit object:
+         *It is an implicit object of Http servlet request.
+         *It is used to get request information such as parameter,server name,server port,remote address,header information,
+         content type,character encoding etc..
+       *JSP Servlet Response:
+         *It is an implicit object of Http servlet response.
+         *It is used to send response such as redirect response to another resource ,send error etc..
+       *JSP Servlet Config:
+         *It is an implicit object of Servlet Config.
+         *it is used to get initialization parameter for a particular Jsp Page.Generally it is used to get initialization
+         parameter from web.xml file.
+       *JSP Application implicit object:
+         *It is an implicit object of Servlet Context.
+         *It is created only once when the application is deployed in server.
+         *Used to get,set or remove attribute from the application scope and used to get initialization parameter from
+         configuration file(web.xml).
+       *JSP Session implicit object:
+         *It is an implicit object of type Http Session.
+         *It is used to set,get or remove attribute or get session information.
+       *JSP Pagecontext implicit object:
+         *It is an implicit object of Page context class.
+         *It is used to get,set,remove attributes from the following scopes
+             *Session
+             *Application
+             *Page
+             *Request
+       *Page implicit object:
+         *It is an implicit object of type Object class,it is written as Object page = this;
+         *To use this, it must be cast to servlet class.eg.<% (HttpServlet)page.log("message"); %>
+         *It is used less because we can use directly in jsp page like this <% this.log("message"); %>
+       *Exception implicit object:
+         *It is an implicit object of java.lang.Throwable class.
+         It is used to print exception but it is used in error pages.
+         Reference:
+         *https://html.com/#HTML_Cheat_Sheet
+         *https://www.javatpoint.com/jsp-tutorial
+
+
 

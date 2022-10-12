@@ -1,7 +1,6 @@
+//Model class for rest api
 package com.stall.model;
-
 import org.springframework.stereotype.Component;
-
 @Component
 public class Fruits {
     private int count;

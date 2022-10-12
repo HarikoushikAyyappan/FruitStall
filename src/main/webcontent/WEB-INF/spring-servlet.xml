@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://www.springframework.org/schema/context        http://www.springframework.org/schema/context/spring-context.xsd        http://www.springframework.org/schema/mvc        http://www.springframework.org/schema/mvc/spring-mvc.xsd      http://www.springframework.org/schema/data/jpa      http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa">    <!-- Provide support for component scanning -->
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		  http://www.springframework.org/schema/data/jpa
+		  http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa">
+    <!-- Provide support for component scanning -->
     <context:component-scan base-package="com.stall.controller"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -11,13 +20,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     <mvc:annotation-driven/>
+    <context:component-scan base-package="com.stall"/>
     <bean id="fruitService" class="com.stall.service.FruitServiceImplementation">
     </bean>
-    <bean id="jpaService" class="com.stall.service.JpaServiceImpl"/>
+    <bean id="userService" class="com.stall.service.UserServiceImpl"/>
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="dataSource" ref="dataSource"/>
-
-
     </bean>
     <jpa:repositories base-package="com.stall.dao" entity-manager-factory-ref="emf"/>
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -31,71 +39,15 @@
             </props>
         </property>
         <property name="persistenceProvider">
-            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"></bean>
+            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
         </property>
     </bean>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url"
-                  value="jdbc:mysql://localhost:3306/fruitstall"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/fruitstall"/>
         <property name="username" value="root"/>
         <property name="password" value="HkSkmysql1*"/>
     </bean>
+
 </beans>
 
-        <!--
-        <?xml version="1.0" encoding="UTF-8"?>
-
-        <beans xmlns:mvc="http://www.springframework.org/schema/mvc"
-               xmlns="http://www.springframework.org/schema/beans"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-               xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-               xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-               xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-
-            <mvc:annotation-driven/>
-            <context:component-scan base-package="com.stall"/>
-
-            <jpa:repositories base-package="com.stall.dao.DataRepository" entity-manager-factory-ref="emf"/>
-            <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                <property name="prefix" value="/WEB-INF/view/" />
-                <property name="suffix" value=".jsp" />
-            </bean>
-
-            <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-                <property name="packagesToScan" value="com.stall.model.PersonEntity"/>
-                <property name="dataSource" ref="dataSource"/>
-
-                <property name="jpaProperties">
-                    <props>
-                        <prop key="hibernate.show_sql">true</prop>
-                        <prop key="hibernate.format_sql">true</prop>
-                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                    </props>
-                </property>
-
-                <property name="persistenceProvider">
-                    <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
-                </property>
-
-            </bean>
-            <bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="dataSource">
-                <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/fruitstall"/>
-                <property name="username" value="root"/>
-                <property name="password" value="HkSkmysql1*"/>
-            </bean>
-            <bean id="fruitService" class="com.stall.service.FruitServiceImplementation">
-            </bean>
-            <bean id="dataRepository" class="com.stall.dao.DataRepository">
-            </bean>
-            <bean id="jpaService" class="com.stall.service.JpaServiceImpl">
-            </bean>
-            <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
-                <property name="dataSource" ref="dataSource"/>
-            </bean>
-        </beans>-->
