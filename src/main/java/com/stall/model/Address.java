@@ -1,3 +1,4 @@
+/*
 package com.stall.model;
 
 import javax.persistence.Column;
@@ -19,6 +20,16 @@ public class Address {
     private String district;
     @Column(name="pincode")
     private int pinCode;
+    @Column(name="custId")
+    private int custId;
+
+    public int getCustId() {
+        return custId;
+    }
+
+    public void setCustId(int custId) {
+        this.custId = custId;
+    }
 
     public int getAddressId() {
         return addressId;
@@ -60,3 +71,4 @@ public class Address {
         this.pinCode = pinCode;
     }
 }
+*/

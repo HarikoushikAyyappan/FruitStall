@@ -1,0 +1,30 @@
+ForeignKey:
+* Foreignkey is used to link one or more tables together.
+*It is also called Referencing key which links two tables by matching the primary key field of another table.
+*It identifies each row of the table which is being referenced and maintains referential integrity in MySQL.
+*Syntax:[CONSTRAINT constraint_name]
+     FOREIGN KEY [foreign_key_name] (col_name, ...)
+     REFERENCES parent_tbl_name (col_name,...)
+     ON DELETE referenceOption
+     ON UPDATE referenceOption
+*Creation of ForeignKey can be done by CREATE TABLE Query and ALTER TABLE Query.
+*There are some Reference Options in Foreignkey syntax such as CASCADE,SETNULL,RESTRICT,NOACTION etc.
+*CASCADE reference options automatically updates/deletes the modifications done in the parentrow.
+*SETNULL makes the child row null when update/delete is done in the parent row.
+*RESTRICT makes the updation and deletion process restricted.
+*It is impossible to make updation or deletion to the child row and make modifications in parent row.
+*The use of Foreign key sometimes makes updation and deletion process impossible because when the sql executes ALTER TABLE
+  statement.It shows exception.To make it execute,"SET foreign_key_checks=0;" command is used but this command can be used
+  in MySQL command line client and it is impoosible to do it using jpa query and the command is a temporary change maker so it can be used for
+  a session.
+ Hibernate tips:
+ *The above stated disadvantage can be overcome using Hibernate .
+ *It is possible to make a single entity map multiple tables using @SecondaryTable annotation which is a pseudo foreign key technique so insertion,
+ updation,deletion process can be done easily.
+ *We can make a single entity refer multiple tables and we can customize the foreign key specifications also.
+ *It is required to define the fields of primary table using @coloumn annotation by providing corresponding coloumn name and
+ define the fields of secondary table using @coloumn annotation with name of the table specified and generate getter and setter for
+ all the fields.
+ References:
+ 1.https://www.javatpoint.com/mysql-foreign-key
+ 2.https://thorben-janssen.com/hibernate-tips-how-to-map-an-entity-to-multiple-tables/

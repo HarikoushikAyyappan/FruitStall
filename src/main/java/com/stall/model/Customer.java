@@ -10,19 +10,10 @@ import javax.persistence.*;
 @SecondaryTable(name="address")
 public class Customer {
     @Id
-    @Column(name = "customerId")
+    @Column(updatable = false, nullable = false)
     private int customerId;
     @Column(name = "name")
     private String name;
-    private int adId;
-
-    public int getAdId() {
-        return adId;
-    }
-
-    public void setAdId(int adId) {
-        this.adId = adId;
-    }
 
     public int getCustomerId() {
         return customerId;
