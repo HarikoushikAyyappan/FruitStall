@@ -20,6 +20,8 @@
         </br>Add    <input type="submit"  value="Add New Person"/></form>
      <form method="post"  action="/Shop/edit">
         </br>Edit     <input type="submit"  value="Edit Person"/></form>
+        <form method="get"  action="/Shop/register">
+                        </br>AddCustomer   <input type="submit"  value="Add New Customer"/></form>
 </div>
 </body>
 </html>

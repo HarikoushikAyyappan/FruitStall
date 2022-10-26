@@ -1,6 +1,8 @@
 package com.stall.service;
 
+import com.stall.dao.CustomerRepository;
 import com.stall.dao.DataRepository;
+import com.stall.model.Customer;
 import com.stall.model.PersonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private DataRepository dataRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Transactional
     public List<PersonEntity> getAllPersons() {
@@ -45,5 +49,9 @@ public class UserServiceImpl implements UserService {
     public List<PersonEntity> search(String keyword) {
         return dataRepository.search(keyword);
     }*/
+   @Transactional
+    public Customer updateCustomer(Customer customer){
+       return customerRepository.save(customer);
+   }
 
 }

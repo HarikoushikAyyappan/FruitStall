@@ -1,4 +1,5 @@
 package com.stall.controller;
+import com.stall.model.Customer;
 import com.stall.model.PersonEntity;
 import com.stall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,18 @@ public class UserController {
         mav.addObject("personList", personList);
         return mav;
     }
+    @RequestMapping("/register")
+    public ModelAndView newCustomer() {
+        ModelAndView modelAndView = new ModelAndView("newCustomer");
+        modelAndView.addObject("customer",new Customer());
+        return modelAndView;
+    }
+    @RequestMapping(value = "/store", method = RequestMethod.POST)
+    public ModelAndView saveCust(@ModelAttribute("customer") Customer customer) {
+        userService.updateCustomer(customer);
+        return new ModelAndView("success");
+    }
+
 }
 
 

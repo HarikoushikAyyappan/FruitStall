@@ -1,5 +1,6 @@
 //service layer code for rest api with jsp,jpa and jdbc
 package com.stall.service;
+import com.stall.model.Customer;
 import com.stall.model.PersonEntity;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,6 @@ public interface UserService {
      PersonEntity updatePerson(PersonEntity personEntity);
 
      void deletePerson(Long id);
+    Customer updateCustomer(Customer customer);
 
 }

@@ -12,7 +12,6 @@ public class FruitServiceImplementation implements FruitService {
         properties.load(inputStream);
         return properties.getProperty(id);
     }
-
     public String addFruits(Fruits fruits) throws IOException {
         Properties properties = new Properties();
         properties.put(fruits.getId(), fruits.getFruitName());
